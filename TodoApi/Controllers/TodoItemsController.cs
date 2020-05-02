@@ -81,8 +81,11 @@ namespace TodoApi.Controllers
         {
             _context.TodoItems.Add(todoItem);
             await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetTodoItem", new { id = todoItem.Id }, todoItem);
+            
+            // CreatedAtAction 方法：
+            //     如果成功，则返回 HTTP 201 (Created) 状态码。
+            //     添加 Location 头，告知刚创建的资源地址（Restful 风格）
+            return CreatedAtAction(nameof(GetTodoItem), new {id = todoItem.Id}, todoItem);
         }
 
         // DELETE: api/TodoItems/5

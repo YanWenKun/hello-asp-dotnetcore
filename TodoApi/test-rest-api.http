@@ -1,0 +1,32 @@
+### To-do Items，先 POST 一个新条目
+POST https://localhost:5001/api/TodoItems
+Content-Type: application/json
+
+{
+  "name": "thing-to-do-1",
+  "isComplete": false
+}
+
+### 获取所有条目
+GET https://localhost:5001/api/TodoItems
+Accept: */*
+Cache-Control: no-cache
+
+### 获取一个条目
+GET https://localhost:5001/api/TodoItems/1
+
+### 更新已有条目
+PUT https://localhost:5001/api/TodoItems/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "thing-to-do-new",
+  "isComplete": true
+}
+
+### 显示允许的操作
+HEAD https://localhost:5001/api/TodoItems/1
+
+### 删除一个条目
+DELETE https://localhost:5001/api/TodoItems/1

@@ -6,10 +6,12 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using TodoApi.Models;
 
 namespace TodoApi
 {
@@ -25,6 +27,10 @@ namespace TodoApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // 添加【数据库上下文】到【依赖注入容器】中
+            // 指定【数据库上下文】使用【内存数据库】
+            services.AddDbContext<TodoContext>(builder =>
+                builder.UseInMemoryDatabase("TodoList"));
             services.AddControllers();
         }
 
